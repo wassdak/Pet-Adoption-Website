@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Want to Give Away a Pet?</title>
+</head>
+<body>
+    
+    <header class="header">
+        <h1> Adapted  <a href="./HomePage.html"> <img src="./cat_dog.png" width="60" height="60" alt="Cat and Dog Logo"> </a></h1>
+    </header>
+
+    <div class="middle">
+        <div class="Navigation">
+            <ul>
+                <li> <a href="./HomePage.html"> Home Page </a></li>
+                <li> <a href="./Browse.html"> Browse Available Pets </a></li>
+                <li> <a href="./Find.html"> Find a Dog/Cat </a> </li>
+                <li> <a href="./DogCare.html"> Dog Care </a> </li>
+                <li> <a href="./CatCare.html"> Cat Care </a> </li>
+                <li class="active"> <a href="./GiveAway.html"> Have a Pet to Give Away </a> </li>
+                <li> <a href="./ContactUs.html"> Contact Us </a> </li>
+            </ul>
+        </div>
+
+        <form id="GiveForm" class="content">
+            <fieldset id="GiveAway">
+                <legend id="GiveLegend"> Give Away Your Pet</legend>
+
+                <br>
+                <label> Is it a Cat or Dog? </label>
+                <label> <input type="radio" name="PetAway" id="DogAway" value="DogAway"> Dog</label>
+                <label> <input type="radio" name="PetAway" id="CatAway" value="CatAway"> Cat</label>
+                
+                <br>
+                <label> What is the breed of the pet? </label>
+                <input type="text" id="breedAway" name="breedAway"> 
+    
+                <br>
+                <label> What is their age range? </label>
+                <label> <input type="radio" id="kit-pup" name="ageAway"> Kitten/Puppy </label>
+                <label> <input type="radio" id="junior" name="ageAway"> Junior/Juvenile </label>
+                <label> <input type="radio" id="adult" name="ageAway"> Adult </label>
+                <label> <input type="radio" id="mature" name="ageAway"> Mature/Senior </label>
+            
+                <br>
+                <label> Gender </label>
+                <label><input type="radio" id="male" name="gender"> Male </label> 
+                <label><input type="radio" id="female" name="gender"> Female </label> 
+                <label><input type="radio" id="Any" name="gender"> Any </label> 
+    
+                <br>
+                <label> Must get along with the following: </label>
+                <label> <input type="checkbox" id="alongW/dogs" name="along"> Dogs</label>
+                <label> <input type="checkbox" id="alongW/cats" name="along"> Cats</label>
+                <label> <input type="checkbox" id="alongW/children" name="along"> Children</label>
+            
+                <br>
+                <label> Tell us about your dog/cat: </label>
+                <input type="text" name="brag" id="brag"> 
+
+                <br>
+                <label for="OwnerName"> Owner's first name: </label>
+                <input type="text" id="OwnerName" name="OwnerName">
+
+                <br>
+                <label for="OwnerSurname"> Owner's last name: </label>
+                <input type="text" id="OwnerSurname" name="OwnerSurname">
+           
+                <br>
+                <label for="OwnerEmail"> Owner's email: </label>
+                <input type="text" id="OwnerEmail" name="OwnerEmail">
+           
+                <br>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+    
+             </fieldset>
+        </form>
+    </div>
+    <footer class="footer">
+        <a href="./Disclaimer.html"> Privacy/Disclaimer</a>
+    </footer>
+
+    <script>
+        document.getElementById('GiveAway').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const breedAway = document.getElementById('breedAway').value;
+            const ownerName = document.getElementById('OwnerName').value;
+            const ownerSurname = document.getElementById('OwnerSurname').value;
+            const ownerEmail = document.getElementById('OwnerEmail').value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!breedAway || !ownerName || !ownerSurname || !ownerEmail) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (!emailPattern.test(ownerEmail)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+
+        });
+    </script>
+</body>
+</html>

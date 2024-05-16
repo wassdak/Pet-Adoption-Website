@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Find Your Dog/Cat!</title>
+</head>
+<body>
+    
+    <header class="header">
+        <h1> Adapted  <a href="./HomePage.html"> <img src="./cat_dog.png" width="60" height="60" alt="Cat and Dog Logo"> </a></h1>
+    </header>
+
+    <div class="middle">
+        <div class="Navigation">
+            <ul>
+                <li> <a href="./HomePage.html"> Home Page </a></li>
+                <li> <a href="./Browse.html"> Browse Available Pets </a></li>
+                <li class="active"> <a href="./Find.html"> Find a Dog/Cat </a> </li>
+                <li> <a href="./DogCare.html"> Dog Care </a> </li>
+                <li> <a href="./CatCare.html"> Cat Care </a> </li>
+                <li> <a href="./GiveAway.html"> Have a Pet to Give Away </a> </li>
+                <li> <a href="./ContactUs.html"> Contact Us </a> </li>
+            </ul>
+        </div>
+
+        <form id="findForm" class="content">
+            <fieldset id="Find"> 
+                <legend id="FindLegend"> Find Your Pet </legend>
+
+                <br>
+                <label> <input type="checkbox" name="Dog" id="Dog" value="Dog"> Dog</label>
+                <label> <input type="checkbox" name="Cat" id="Cat" value="Cat"> Cat</label>
+       
+                <br>
+                <label for="breed"> Breed of Dog/Cat </label>
+                <input type="text" id="breed" name="breed"> 
+
+                <br>
+                <label> Preferred Age </label>
+                <label><input type="radio" id="0-1" name="0-1"> 0-1 </label> 
+                <label><input type="radio" id="1-2" name="1-2"> 1-2 </label>
+                <label><input type="radio" id="2-4" name="2-4"> 2-4 </label>
+                <label><input type="radio" id="five+" name="five+"> 5+ </label>
+                <label><input type="radio" id="any" name="any"> Any </label>    
+                
+
+                <br>
+                <label> Gender: </label>
+                <label><input type="radio" id="male" name="gender"> Male </label> 
+                <label><input type="radio" id="female" name="gender"> Female </label> 
+                <label><input type="radio" id="Any" name="gender"> Any </label> 
+
+                <br>
+                <label> Must get along with the following: </label>
+                <label> <input type="checkbox" id="alongW/dogs" name="along"> Dogs</label>
+                <label> <input type="checkbox" id="alongW/cats" name="along"> Cats</label>
+                <label> <input type="checkbox" id="alongW/children" name="along"> Children</label>
+
+                <br>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+            </fieldset>
+        </form>
+    </div>
+    <footer class="footer">
+        <a href="./Disclaimer.html"> Privacy/Disclaimer</a>
+    </footer>
+    <script>
+        document.getElementById("findForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const breed = document.getElementById("breed").value;
+            if (!breed) {
+                alert("Breed field cannot be blank");
+                return;
+            }
+
+            const dogCheckbox = document.getElementById("Dog");
+            const catCheckbox = document.getElementById("Cat");
+
+            if (!dogCheckbox.checked && !catCheckbox.checked) {
+                alert("Please select at least one option for pet type.");
+                return;
+            }
+
+            const maleRadio = document.getElementById("male");
+            const femaleRadio = document.getElementById("female");
+            const anyRadio = document.getElementById("Any");
+
+            if (!maleRadio.checked && !femaleRadio.checked && !anyRadio.checked) {
+                alert("Please select a gender option.");
+                return;
+            }
+
+            const age = document.querySelector('input[name="0-1"]:checked') ||
+                        document.querySelector('input[name="1-2"]:checked') ||
+                        document.querySelector('input[name="2-4"]:checked') ||
+                        document.querySelector('input[name="five+"]:checked') ||
+                        document.querySelector('input[name="any"]:checked');
+            if(!age){
+                alert("Age field cannot be blank");
+                return;
+            }
+
+            const alongWithDogsCheckbox = document.getElementById("alongW/dogs");
+            const alongWithCatsCheckbox = document.getElementById("alongW/cats");
+            const alongWithChildrenCheckbox = document.getElementById("alongW/children");
+
+            if (!alongWithDogsCheckbox.checked && !alongWithCatsCheckbox.checked && !alongWithChildrenCheckbox.checked) {
+                alert("Please select at least one option for 'Must get along with'.");
+                return;
+            }
+
+            alert("Form submitted successfully!"); // Remove this alert once form submission logic is finalized
+        });
+    </script>
+</body>
+</html>
